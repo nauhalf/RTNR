@@ -1,6 +1,7 @@
 package com.dl.rtnr;
 
 import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 
 import org.apache.commons.math3.complex.Complex;
@@ -16,7 +17,7 @@ import java.nio.MappedByteBuffer;
 import java.util.HashMap;
 import java.util.Map;
 
-public class rtNoiseReducer {
+public class RealTimeNoiseReducer {
     private String tflitePath = "nunet_lstm.tflite";
 
     private Interpreter.Options tfOptions = new Interpreter.Options();
@@ -125,10 +126,10 @@ public class rtNoiseReducer {
 
     private float[][][][] tflite_out = new float[1][1][256][1];
 
-    public rtNoiseReducer(Activity activity) throws IOException {
+    public RealTimeNoiseReducer(Context context) throws IOException {
         tfOptions.setNumThreads(-1);
 
-        tfModel = FileUtil.loadMappedFile(activity, tflitePath);
+        tfModel = FileUtil.loadMappedFile(context, tflitePath);
         try {
             tflite = new Interpreter(tfModel, tfOptions);
         } catch (Exception e) {
