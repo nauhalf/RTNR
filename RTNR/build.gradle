@@ -7,17 +7,17 @@ afterEvaluate {
         publications{
             release(MavenPublication){
                 from components.release
-                groupId = 'com.dl.rtnr' // package name
+                groupId = 'id.salt.rtnr' // package name
                 artifactId = 'RTNR' // module name
-                version = 'V2.0.0'
+                version = '2.0.3'
             }
 
             debug(MavenPublication) {
                 // Applies the component for the debug build variant.
                 from components.debug
-                groupId = 'com.dl.rtnr'
-                artifactId = 'RTNR'
-                version = 'V2.0.0'
+                groupId = 'id.salt.rtnr' // package name
+                artifactId = 'RTNR' // module name
+                version = '2.0.3'
             }
         }
     }
@@ -49,11 +49,11 @@ android {
 }
 
 dependencies {
-    implementation 'org.tensorflow:tensorflow-lite:+' // TFLite
-    implementation 'org.tensorflow:tensorflow-lite-support:0.3.0' // TFLite FileUtil
+    implementation 'org.tensorflow:tensorflow-lite:2.17.0' // TFLite
+    implementation 'org.tensorflow:tensorflow-lite-support:0.5.0' // TFLite FileUtil
     implementation files('libs/commons-math3-3.6.1.jar') // Complex, FFT
     implementation files('libs/sound-1.1.1.jar') // STFT
-    implementation "org.tensorflow:tensorflow-lite-select-tf-ops:+" // TFLite LSTM
+    implementation "org.tensorflow:tensorflow-lite-select-tf-ops:2.16.1" // TFLite LSTM
 
     implementation 'androidx.appcompat:appcompat:1.4.1'
     implementation 'com.google.android.material:material:1.5.0'
